@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<th:block th:insert="index::encabezado"/>
+
+<BODY style="background-color: #e3f2fd;">
+<div class="container-fluid " style="background-color: #e3f2fd;">
+  <div class="container p-3 my-3 border bg-light " >
+  	 <h3 class="text-center text-primary" >Reportes Asistencia</h3>
+  	   	<div >
+  
+<ul th:each="centro : ${centros}">
+      <li>
+        <span th:text="${centro.nombre}">First</span>
+      </li>
+    </ul>
+ </div>
+  	 <br/><br/>
+  	 <form method="POST" action="/reportes/obtener" id="formReportes">
+
+     <div class="row" >
+       	<div class="col">
+      		<input type="text" class="form-control" placeholder="Fecha de inicio" name="fechaDeInicio" id="fechaDeInicio">
+    	</div>
+    	<div class="col">
+      		<input type="text" class="form-control" placeholder="Fecha de fin" name="fechaDeFin" id="fechaDeFin">
+    	</div>
+  	</div>
+  	<br/>
+
+  	<div class="row">
+    	<div class="col">
+      		<div class="form-group">
+			    <label for="seleccionCentro">Selecciona el centro</label>
+			    <select class="form-control" id="seleccionCentro" >
+			   <!-- 
+              <option th:each="Centro : ${centros}" th:value="${centro.id}" th:text="${centro.getNombre}" ></option>
+               -->
+               <option value=2>Centro Tlahuac</option>
+               <option value=1>Centro Izatapalapa</option>
+			    </select>
+			 </div>
+    	</div>
+    	<div class="col">
+      		<div class="form-group" >
+			    <label for="seleccionActividad">Selecciona la actividad</label>
+			    <select class="form-control" id="seleccionActividad">
+			      	<option value=2>Canto</option>
+               <option value=1>Guitarra</option>
+			    </select>
+			 </div>
+    	</div>
+  	</div>
+
+  	<br/>
+   		<button type="submit" class="btn btn-primary" name="buscar" id="buscar">Buscar</button>
+   	</form>
+  	</div>
+ </div>
+</BODY>
+</HTML>
